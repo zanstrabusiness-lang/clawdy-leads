@@ -32,3 +32,16 @@ The script:
 - Individual JSON files under `leads/data/` hold the hits (title, URL, snippet) plus the raw payload.
 
 Drop new categories or cities into the config whenever you want to target a fresh niche.
+
+## Extract email addresses
+Once you have JSON outputs, run the email harvester to scan those results and the landing pages for contact info:
+```bash
+python leads/email_finder.py --files 20260322T211856_barber-zaandam.json \
+  --max-results-per-file 10
+```
+Options:
+- `--data-dir` points to another directory (default is `leads/data`).
+- `--files` lets you limit which lead dumps to scan.
+- `--max-results-per-file` limits how many URLs are fetched from each JSON (default: all).
+- `--dry-run` skips network requests and only inspects the already-captured snippets/descriptions.
+- Output is written to `leads/data/emails.json`, which contains the files, which query produced them, and the emails found per URL.
