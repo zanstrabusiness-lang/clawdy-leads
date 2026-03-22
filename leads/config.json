@@ -1,0 +1,30 @@
+{
+  "city": "Amsterdam",
+  "categories": [
+    "café",
+    "barber",
+    "yoga studio",
+    "craft brewery",
+    "artisan bakery"
+  ],
+  "query_templates": [
+    "{category} {city}",
+    "{category} near {city}",
+    "{category} {city} business website",
+    "{category} {city} contact"
+  ],
+  "extra_queries": [
+    "family-owned restaurant Amsterdam",
+    "new boutique hotel Amsterdam"
+  ],
+  "results_per_query": 5,
+  "delay_seconds": 1,
+  "max_queries": 0,
+  "output_dir": "leads/data",
+  "metadata_fields": [
+    "title",
+    "url",
+    "description",
+    "snippet"
+  ]
+}

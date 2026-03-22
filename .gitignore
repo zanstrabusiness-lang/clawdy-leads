@@ -1,7 +1,7 @@
 # Dependency directories
 node_modules/
 /.pnp/
-.pnp.js
+/.pnp.js
 
 # Build output
 dist/
@@ -34,3 +34,6 @@ Desktop.ini
 # Temporary files
 *.tmp
 *.temp
+
+# Lead research data
+leads/data/
