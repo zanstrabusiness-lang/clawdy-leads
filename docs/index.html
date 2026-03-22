@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clawdy Leads Preview Hub</title>
+    <style>
+      body {
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        line-height: 1.6;
+        color: #0b0f1a;
+        background: #f3f4f6;
+        margin: 0;
+        min-height: 100vh;
+      }
+      .hero {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 4rem 1.25rem;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(2.25rem, 3vw, 3rem);
+        margin-bottom: 1rem;
+      }
+      p {
+        color: #475467;
+        margin-bottom: 1.5rem;
+      }
+      .card {
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        padding: 1.5rem;
+        text-align: left;
+        margin: 1rem auto;
+        max-width: 640px;
+      }
+      a {
+        color: #2563eb;
+      }
+      code {
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        background: #eef2ff;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.45rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <h1>Clawdy Leads Preview Hub</h1>
+      <p>
+        This GitHub Pages site hosts the personalized preview homepages we craft for local businesses. Each lead gets its own slug folder with a static mockup URL, so we can drop links directly into outreach messages.
+      </p>
+      <div class="card">
+        <h2>How to publish a preview</h2>
+        <ol>
+          <li>Run the automation in <code>leads/</code> to gather business info.</li>
+          <li>Render a homepage into <code>previews/&lt;slug&gt;/index.html</code> using the frontend skill.</li>
+          <li>Commit the <code>previews/</code> directory and push to <code>main</code>.</li>
+          <li>GitHub Pages automatically publishes it at <code>https://zanstrabusiness-lang.github.io/clawdy-leads/previews/&lt;slug&gt;/</code>.</li>
+        </ol>
+        <p>
+          If the business owns a custom domain, drop a <code>CNAME</code> file inside the slug folder and point their DNS to GitHub Pages—then the preview is accessible at their real URL while still matching the slug path.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>Use the new frontend skill to generate mockups for a handful of barbers.</li>
+          <li>Track the published slug in <code>previews/catalog.json</code> (we can add this file when you want it).</li>
+          <li>Share the live link with each lead before the follow-up call.</li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
