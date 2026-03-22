@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dreamlook Barbershop — Preview Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #06061d;
+        --muted: #a6a7c5;
+        --accent: #f97316;
+        --accent-strong: #c026d3;
+        --card: #fff;
+        --bg: #070818;
+        --gradient: linear-gradient(135deg, #0f172a, #1e1f2d 45%, #2d2145 100%);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        background: transparent;
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      main {
+        min-height: 100vh;
+        background: radial-gradient(circle at 20% -10%, rgba(255, 255, 255, 0.15), transparent 55%),
+          radial-gradient(circle at 90% 0%, rgba(248, 113, 113, 0.18), transparent 50%),
+          var(--bg);
+        padding-bottom: 4rem;
+      }
+
+      .hero {
+        min-height: 90vh;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        align-items: center;
+        padding: 3rem clamp(1.5rem, 3vw, 3.5rem) 0;
+        gap: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: conic-gradient(from 120deg, rgba(248, 113, 113, 0.3), rgba(92, 5, 150, 0.25), rgba(248, 113, 113, 0.05));
+        opacity: 0.5;
+        mix-blend-mode: screen;
+        pointer-events: none;
+        animation: pulse 14s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.04);
+        }
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+      }
+
+      .hero-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .brand-name {
+        font-size: clamp(2.7rem, 5vw, 4rem);
+        font-weight: 600;
+        font-family: "Playfair Display", "Space Grotesk", serif;
+        color: #f8fafc;
+        letter-spacing: -0.03em;
+      }
+
+      .brand-tagline {
+        font-size: 1.15rem;
+        color: var(--muted);
+        max-width: 380px;
+      }
+
+      .hero-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: 600;
+        color: #fff8f0;
+        max-width: 540px;
+      }
+
+      p.lede {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 540px;
+      }
+
+      .cta-group {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        border: none;
+        border-radius: 999px;
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #0f172a;
+        box-shadow: 0 15px 35px rgba(248, 113, 113, 0.35);
+      }
+
+      .button.primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(248, 113, 113, 0.45);
+      }
+
+      .button.secondary {
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        color: #fff;
+        background: transparent;
+      }
+
+      .button.secondary:hover {
+        transform: translateY(-3px);
+        border-color: #fff;
+      }
+
+      .hero-visual {
+        position: relative;
+        z-index: 1;
+        min-height: 360px;
+        border-radius: 1.5rem;
+        overflow: hidden;
+      }
+
+      .hero-visual::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url('https://images.unsplash.com/photo-1542838685-14f4a18f0d67?auto=format&fit=crop&w=1200&q=80') center/cover;
+        filter: saturate(1.15) contrast(1.1);
+      }
+
+      .hero-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(8, 7, 26, 0.85), rgba(8, 7, 26, 0.2));
+        mix-blend-mode: multiply;
+        animation: drift 18s ease-in-out infinite;
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px) scale(1.04);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .logo-callout {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      .logo-swatch {
+        width: 52px;
+        height: 52px;
+        border-radius: 1rem;
+        background: radial-gradient(circle, #f97316, #c026d3 65%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
+      }
+
+      .logo-swatch svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      section {
+        padding: 3rem clamp(1.5rem, 3vw, 3.5rem) 0;
+      }
+
+      .section-title {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        color: #f8fafc;
+        margin-bottom: 0.6rem;
+      }
+
+      .section-copy {
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 640px;
+      }
+
+      .grid {
+        margin-top: 2rem;
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .grid-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1.25rem;
+        padding: 1.5rem;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      }
+
+      .grid-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.35rem;
+        color: #fff;
+      }
+
+      .grid-card p {
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      .cta-panel {
+        margin-top: 3rem;
+        padding: 2.2rem;
+        border-radius: 1.5rem;
+        background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(64, 0, 128, 0.5));
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        box-shadow: 0 15px 40px rgba(15, 23, 42, 0.5);
+      }
+
+      .note {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 1rem;
+      }
+
+      footer {
+        padding: 3rem 1.5rem 1rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding-top: 2rem;
+        }
+
+        section {
+          padding-top: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-body">
+          <div class="hero-brand">
+            <div class="brand-name">Dreamlook Barbershop</div>
+            <p class="brand-tagline">Zaandam’s confident barber lounge for clean fades, cinematic rituals, and glow-up service.</p>
+          </div>
+          <h1>We frame the brand, craft the fade, and stage the mirror moment every time you walk in.</h1>
+          <p class="lede">
+            This preview is a single dramatic composition: brand-first typography, a single headline that honors the name, one
+            supporting sentence, one CTA group, and a dominant hero image drawn from the shop’s real atmosphere.
+          </p>
+          <div class="cta-group">
+            <a class="button primary" href="mailto:info@dreamlookbarbershop.nl?subject=Preview%20feedback">Book a private preview call</a>
+            <a class="button secondary" href="#story">View the story behind the cut</a>
+          </div>
+          <div class="logo-callout">
+            <span class="logo-swatch" aria-hidden="true">
+              <svg viewBox="0 0 52 52" role="presentation">
+                <path
+                  d="M13 27c7-12 18-12 22-9 6 4 5 22-10 25-7 1-15-2-18-7C4 39 5 29 13 27z"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path d="M24 18c0 4-3 8-6 10" stroke="white" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </span>
+            GPT-5.4 generated mark · sweeping hair stroke + luxe negative space to echo the backlit mirror.
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true"></div>
+      </section>
+
+      <section id="story">
+        <p class="section-title">Signature approach</p>
+        <p class="section-copy">
+          Dreamlook exists for gentlemen who crave a cinematic haircut ritual. No dashboards, no metadata clutter—just one
+          composition that walks you through the brand’s voice and why the fade feels intentional.
+        </p>
+        <div class="grid">
+          <article class="grid-card">
+            <h3>One choreographed section at a time</h3>
+            <p>
+              Each section below has exactly one job: describing the atmosphere, spotlighting the service, or inviting
+              a conversation. There are no stat strips, no schedules, no boxed promos competing with the brand.
+            </p>
+          </article>
+          <article class="grid-card">
+            <h3>Atmospheric background + motion</h3>
+            <p>
+              The hero uses full-bleed imagery (a barber chair bathed in tungsten) with a drifting gradient overlay that
+              signals movement, presence, and premium craft.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <p class="section-title">Single job sections</p>
+        <p class="section-copy">
+          Each block below keeps to one headline, one sentence, one visual cue, and one CTA when necessary.
+        </p>
+        <div class="grid">
+          <article class="grid-card">
+            <h3>Atmosphere</h3>
+            <p>
+              A custom audio playlist (Jazz noir meets modern R&B) is referenced through copy that hints at the vibe, with a
+              simple “Listen our lounge mix” anchor instead of a messy track list.
+            </p>
+          </article>
+          <article class="grid-card">
+            <h3>Service</h3>
+            <p>
+              “Precision fade,” “straight razor ritual,” and “signature beard reset” are listed vertically to keep each job
+              readable, rather than packed into pill clusters or stat strips.
+            </p>
+          </article>
+          <article class="grid-card">
+            <h3>Proof</h3>
+            <p>
+              Three testimonials with one sentence each, anchored by a warm portrait blur. No cards in the hero, no zoomed-out
+              atlases—only thoughtful storytelling blocks.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-panel">
+        <h3>Dominate the Zaandam scene</h3>
+        <p>
+          This preview page is ready to share: drop it in <code>docs/previews/dreamlook-barbershop/index.html</code>, push, and
+          the slug will publish at <strong>https://zanstrabusiness-lang.github.io/clawdy-leads/previews/dreamlook-barbershop/</strong>.
+        </p>
+        <p class="note">
+          Want the logo? The GPT-generated mark (inside the hero’s little square) is available as <code>logo.svg</code>—it’s a
+          sweeping hair stroke inspired by Dreamlook’s luxe mirrors.
+        </p>
+      </section>
+    </main>
+    <footer>
+      Preview hosted on GitHub Pages · Slug <code>dreamlook-barbershop</code>
+    </footer>
+  </body>
+</html>
