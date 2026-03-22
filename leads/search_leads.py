@@ -8,7 +8,7 @@ import os
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Set
 
@@ -22,6 +22,8 @@ class BraveLeadFinder:
         self.api_key = api_key
         self.config = config
         self.output_dir = Path(config.get("output_dir", "leads/data"))
+        if not self.output_dir.is_absolute():
+            self.output_dir = Path.cwd() / self.output_dir
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.index_path = self.output_dir / "index.json"
         self.results_per_query = config.get("results_per_query", 5)
@@ -48,12 +50,13 @@ class BraveLeadFinder:
         payload = response.json()
         hits = payload.get("web", {}).get("results", [])
         normalized = self._normalize_hits(hits)
+        timestamp = datetime.now(timezone.utc).isoformat()
 
         return {
             "query": plan["query"],
             "category": plan.get("category"),
             "template": plan.get("template"),
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": timestamp,
             "results": normalized,
             "raw": payload,
         }
@@ -72,7 +75,8 @@ class BraveLeadFinder:
     def persist(self, plan: Dict[str, str], record: Dict[str, Any]) -> Path:
         slug_source = plan["query"]
         slug = slugify(slug_source)
-        filename = f"{datetime.utcnow().strftime('%Y%m%dT%H%M%S')}_{slug}.json"
+        now = datetime.now(timezone.utc)
+        filename = f"{now.strftime('%Y%m%dT%H%M%S')}_{slug}.json"
         target = self.output_dir / filename
         with target.open("w", encoding="utf-8") as handle:
             json.dump(record, handle, ensure_ascii=False, indent=2)
