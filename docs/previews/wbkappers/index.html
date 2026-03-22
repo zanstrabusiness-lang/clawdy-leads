@@ -1,25 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WB Kappers — 2026 Preview Home</title>
+    <title>WB Kappers — 2026 Vision</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Black+Han+Sans&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --ink: #0d0f1a;
-        --paper: #fff8f0;
-        --shadow: 0 30px 60px rgba(13, 15, 26, 0.25);
-        --glow: rgba(251, 191, 36, 0.6);
-        --accent: #f97316;
-        --deep: #0b1428;
-        --gradient: radial-gradient(circle at top right, rgba(249, 115, 22, 0.35), transparent 50%),
-          radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.25), transparent 45%), #05070f;
+        --ink: #030611;
+        --warm: #ffe6cb;
+        --spark: #f97316;
+        --glow: rgba(249, 115, 22, 0.45);
+        --deep: #070b1c;
+        --taupe: #b5a58a;
+        --gradient: radial-gradient(circle at 20% 0, rgba(249, 115, 22, 0.25), transparent 55%),
+          radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.08), transparent 45%), #05050f;
+        --textured: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 35%,
+            rgba(255, 255, 255, 0) 60%
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.03) 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px,
+            transparent 4px
+          );
       }
 
       * {
@@ -30,42 +43,50 @@
         margin: 0;
         font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
         background: var(--deep);
-        color: var(--paper);
+        color: var(--warm);
         min-height: 100vh;
       }
 
       main {
         min-height: 100vh;
         background: var(--gradient);
-        overflow: hidden;
+        background-blend-mode: screen;
+        padding-bottom: 3rem;
       }
 
       .hero {
+        min-height: 100vh;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        align-items: center;
-        padding: clamp(2.5rem, 4vw, 4.5rem) clamp(1.5rem, 3vw, 3.5rem) 0;
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 4.25rem) 2rem;
+        gap: 2.5rem;
         position: relative;
-        z-index: 1;
+        overflow: hidden;
       }
 
+      .hero::before,
       .hero::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), transparent 60%);
-        opacity: 0;
-        animation: shimmer 9s ease-in-out infinite;
+        background: var(--textured);
+        opacity: 0.6;
         pointer-events: none;
+        mix-blend-mode: screen;
       }
 
-      @keyframes shimmer {
+      .hero::after {
+        background: radial-gradient(circle at 70% 20%, rgba(4, 23, 35, 0.6), transparent 55%);
+        opacity: 0;
+        animation: float 14s ease-in-out infinite;
+      }
+
+      @keyframes float {
         0% {
           opacity: 0;
         }
         50% {
-          opacity: 1;
+          opacity: 0.4;
         }
         100% {
           opacity: 0;
@@ -73,194 +94,178 @@
       }
 
       .hero-content {
+        max-width: 580px;
         position: relative;
         z-index: 2;
       }
 
-      .brand-mark {
-        display: inline-flex;
-        font-family: "Playfair Display", "Space Grotesk", serif;
-        font-size: clamp(2.25rem, 4vw, 3rem);
-        letter-spacing: -0.02em;
-        color: #fbbf24;
-      }
-
-      p.subtitle {
-        margin: 0.5rem 0 1.5rem;
-        font-size: 1rem;
-        color: rgba(255, 248, 240, 0.75);
-      }
-
-      h1 {
-        margin: 0;
-        font-size: clamp(2.6rem, 4.2vw, 3.75rem);
-        line-height: 1.15;
-        letter-spacing: -0.02em;
-        color: #fff;
-      }
-
-      h1 strong {
-        display: block;
-        font-family: "Playfair Display", "Space Grotesk", serif;
+      .hero-content h1 {
+        font-size: clamp(3rem, 5vw, 4.25rem);
         font-weight: 600;
-        color: var(--accent);
+        margin: 0 0 1rem;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
       }
 
-      p.lede {
-        max-width: 540px;
+      .hero-content h1 span {
+        display: block;
+        font-family: "Black Han Sans", "Playfair Display", serif;
+        letter-spacing: 0.05em;
+        color: var(--spark);
+      }
+
+      .hero-content p.lede {
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 1.5rem;
+      }
+
+      .brand-callout {
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.75rem;
         color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 1rem;
       }
 
       .cta-group {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
+        margin-top: 1rem;
       }
 
-      .button {
-        border: none;
+      .cta {
         border-radius: 999px;
-        padding: 0.95rem 1.9rem;
+        padding: 0.9rem 1.8rem;
+        font-size: 0.95rem;
         font-weight: 700;
-        font-size: 1rem;
+        border: none;
         cursor: pointer;
-        transition: transform 160ms ease, box-shadow 160ms ease;
+        transition: transform 180ms ease, box-shadow 180ms ease;
         text-decoration: none;
       }
 
-      .button.primary {
-        background: var(--accent);
-        color: #0c0c0f;
-        box-shadow: 0 20px 35px rgba(249, 115, 22, 0.35);
+      .cta.primary {
+        background: linear-gradient(135deg, rgba(249, 115, 22, 1), rgba(249, 115, 22, 0.8));
+        color: #07070f;
+        box-shadow: 0 20px 45px rgba(249, 115, 22, 0.4);
       }
 
-      .button.secondary {
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        color: #fff;
+      .cta.secondary {
+        border: 1px solid rgba(255, 255, 255, 0.5);
         background: transparent;
+        color: #fff;
       }
 
-      .button:hover {
-        transform: translateY(-4px);
+      .cta:hover {
+        transform: translateY(-3px);
       }
 
       .hero-visual {
         position: relative;
-        min-height: 420px;
-        border-radius: 28px;
+        min-height: 380px;
+        border-radius: 32px;
         overflow: hidden;
-        background: #06070e;
-        box-shadow: var(--shadow);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
       }
 
       .hero-visual::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80')
-          center/cover;
-        filter: saturate(1.1) contrast(1.1);
+        background: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80') center/cover;
+        filter: saturate(1.1) contrast(1.05);
       }
 
       .hero-visual::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(160deg, rgba(5, 6, 15, 0.85), rgba(248, 113, 113, 0.1));
+        background: linear-gradient(160deg, rgba(3, 6, 12, 0.95), rgba(3, 6, 12, 0.2));
         mix-blend-mode: multiply;
-        animation: pulse 18s ease-in-out infinite;
+        animation: drift 16s ease-in-out infinite;
       }
 
-      @keyframes pulse {
+      @keyframes drift {
         0% {
-          transform: scale(1);
+          transform: translateY(0);
         }
         50% {
-          transform: scale(1.02);
+          transform: translateY(-12px) scale(1.03);
         }
         100% {
-          transform: scale(1);
+          transform: translateY(0);
         }
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.35rem 0.9rem;
-        border-radius: 999px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        background: rgba(248, 113, 113, 0.2);
-        color: #fbbf24;
       }
 
       section {
-        padding: 3rem clamp(1.5rem, 3vw, 3.5rem);
+        padding: clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 3vw, 4.25rem);
       }
 
       .section-title {
-        font-size: clamp(1.5rem, 2.5vw, 2rem);
-        margin-bottom: 0.2rem;
+        font-size: clamp(1.6rem, 2.7vw, 2.1rem);
+        margin-bottom: 0.4rem;
       }
 
       .section-copy {
-        color: rgba(255, 255, 255, 0.7);
-        max-width: 620px;
-        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.65);
+        max-width: 640px;
       }
 
       .grid {
+        margin-top: 1.75rem;
         display: grid;
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
       }
 
-      .feature-block {
-        border-radius: 1.5rem;
-        padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.02);
+      .section-card {
+        border-radius: 22px;
         border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(16px);
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 1.5rem;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
       }
 
-      .feature-block h3 {
-        margin: 0 0 0.5rem;
-        font-size: 1.15rem;
+      .section-card h3 {
+        margin-top: 0;
+        margin-bottom: 0.4rem;
+        font-size: 1.05rem;
       }
 
-      .feature-block p {
+      .section-card p {
         margin: 0;
-        color: rgba(255, 255, 255, 0.65);
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.5;
       }
 
-      .logo-slate {
-        width: 60px;
-        height: 60px;
-        border-radius: 18px;
-        background: radial-gradient(circle at 35% 15%, rgba(249, 115, 22, 0.8), rgba(192, 38, 211, 0.8));
+      .logo-panel {
+        margin-top: 2rem;
         display: flex;
         align-items: center;
-        justify-content: center;
-        box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.3);
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
       }
 
-      .logo-slate svg {
-        width: 34px;
-        height: 34px;
+      .logo-panel svg {
+        width: 56px;
+        height: 56px;
       }
 
       footer {
         text-align: center;
-        padding: 2rem 1rem 3rem;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.9rem;
+        padding: 2.5rem 1rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.85rem;
       }
 
       @media (max-width: 640px) {
-        .hero-visual {
-          min-height: 320px;
+        .hero {
+          padding-top: 2rem;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -269,98 +274,63 @@
     <main>
       <section class="hero">
         <div class="hero-content">
-          <div class="badge">WB Kappers · Zaandijk</div>
-          <div class="brand-mark">WB Kappers</div>
-          <p class="subtitle">Dé kapsalon in Zaanstad die al jaren liefdevolle aandacht geeft aan elke knipbeurt.</p>
+          <div class="brand-callout">WB Kappers • Zaanstad</div>
           <h1>
-            Fresh fades,<strong> couverture-barber craft,</strong><br />and razor control for every local legend.
+            <span>WB</span>
+            Kappers — visionair vakmanschap voor mannen die geen middelmaat accepteren.
           </h1>
           <p class="lede">
-            2026-style landing page rooted in the salon’s identity: one bold composition, a hero that feels cinematic,
-            and copy that mirrors the warm, personal tone WB favors on site. The CTA invites the visitor to book or just
-            drop in, tying directly to the salon’s promise of openness.
+            A single, cinematic viewport with the name front and center, a powerful headline, one supporting sentence,
+            and two bold CTAs. No cards, no stats, no badges. Just atmosphere, brand, and a personal invitation.
           </p>
           <div class="cta-group">
-            <a class="button primary" href="https://knipklok.nl/" target="_blank" rel="noreferrer">Book your slot</a>
-            <a class="button secondary" href="tel:0757503339">Call us • 075 750 3339</a>
+            <a class="cta primary" href="https://knipklok.nl/" target="_blank" rel="noreferrer">Boek direct</a>
+            <a class="cta secondary" href="tel:0757503339">Bel 075 750 3339</a>
           </div>
-          <div class="hero-logo" style="margin-top: 1.5rem; display:flex; gap:1rem; align-items:center;">
-            <div class="logo-slate" aria-hidden="true">
-              <svg viewBox="0 0 64 64" role="presentation">
-                <path
-                  d="M20 33c11-16 24-11 26-2 2 8-1 17-8 20s-13 1-18-4S17 41 20 33z"
-                  stroke="white"
-                  stroke-width="3"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <circle cx="34" cy="30" r="2" fill="#fff" />
-              </svg>
-            </div>
+          <div class="logo-panel">
+            <img src="logo.svg" alt="WB Kappers logo" width="56" height="56" />
             <div>
-              <p style="margin:0; font-size:0.95rem; letter-spacing:0.1em;">WB MEMO</p>
-              <p style="margin:0; color:rgba(255,255,255,0.65);">Personalized care, every visit.</p>
+              <strong>Logo</strong>
+              <p>Minimal, sharp, GTP-guided sweep that feels like a blade whispering through light.</p>
             </div>
           </div>
         </div>
-        <div class="hero-visual"></div>
+        <div class="hero-visual" aria-hidden="true"></div>
       </section>
 
       <section>
-        <p class="section-title">What makes WB so magnetic</p>
+        <p class="section-title">One job per section</p>
         <p class="section-copy">
-          We preserved their promise: intimate, human-first service; transparent pricing; and stylists who actually know
-          your name. This preview builds on that by layering dramatic gradients, expressive typography, and a single
-          hero composition with purposeful CTA moment.
+          Everything below respects the “one job, one headline” rule: atmosphere, service, and proof with purposeful
+          gradients and motion, but no cluttered lists, no pill chips, no hero overlays.
         </p>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-          <article class="feature-block">
-            <h3>One job: Booking confidence</h3>
-            <p>Hero copy focuses on the brand (“WB Kappers”) and one CTA stack — no stats, no side promotions, no clutter.</p>
+        <div class="grid">
+          <article class="section-card">
+            <h3>Atmosphere</h3>
+            <p>
+              Modern minimalism with cinematic lighting invites guests into the Zaandijk studio. Soft grain, layered
+              gradients, and expressive typography replace flat hero cards.
+            </p>
           </article>
-          <article class="feature-block">
-            <h3>Expressive typography</h3>
-            <p>Display font lifts the brand name, while the body copy uses a refined mono-width for reports and service promises.</p>
+          <article class="section-card">
+            <h3>Service</h3>
+            <p>
+              From the €20 quick cut to the 90-minute VIP ritual, this section keeps the pricing language lean while still
+              emphasizing transparency and expertise.
+            </p>
           </article>
-          <article class="feature-block">
-            <h3>Atmosphere over cards</h3>
-            <p>Full-bleed hero visual, warm gradients, and cinematic lighting reinforce the experience WB sells in Zaandijk.</p>
+          <article class="section-card">
+            <h3>Presence</h3>
+            <p>
+              Motion is purposeful—hero shimmer + drifting gradients signal that WB Kappers is tactile, not static.
+              Nothing else in the first viewport distracts from the message.
+            </p>
           </article>
         </div>
-      </section>
-
-      <section>
-        <p class="section-title">Services, simplified</p>
-        <p class="section-copy">
-          Each block states what really matters for WB: precision cuts, beard rituals, and flexible walk-in availability.
-        </p>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-          <article class="feature-block">
-            <h3>Men’s ritual</h3>
-            <p>90-minute VIP treatment, razor-edge detailing, steam wash, and luxe mask — our copy reflects their flagship package.</p>
-          </article>
-          <article class="feature-block">
-            <h3>Walk-in grace</h3>
-            <p>“Geen afspraak? Je bent altijd welkom” becomes a soft underline under the CTA instead of a card on the hero.</p>
-          </article>
-          <article class="feature-block">
-            <h3>Transparent pricing</h3>
-            <p>Focused text highlights the price anchors (from €20 up to VIP package) so visitors know exactly what to expect.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="feature-block" style="margin: 0 1.5rem 3rem; background: rgba(255,255,255,0.03);">
-        <h3>Motion & micro feel</h3>
-        <p>
-          Subtle shimmer animation on the hero, drifting gradients, and layered radial lights create sensory depth without noise.
-          Landing areas stay lean, honoring the “one job per section” rule.
-        </p>
       </section>
 
       <footer>
-        <p>Preview hosted on GitHub Pages · Slug <code>wbkappers</code></p>
+        Preview hosted via GitHub Pages · Slug <code>wbkappers</code>
       </footer>
     </main>
   </body>
